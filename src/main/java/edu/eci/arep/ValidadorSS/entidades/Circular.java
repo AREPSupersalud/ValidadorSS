@@ -1,4 +1,6 @@
-package edu.eci.arep.ValidadorSS;
+package edu.eci.arep.ValidadorSS.entidades;
+
+import edu.eci.arep.ValidadorSS.entidades.Archivo;
 
 import java.util.ArrayList;
 import java.util.List;

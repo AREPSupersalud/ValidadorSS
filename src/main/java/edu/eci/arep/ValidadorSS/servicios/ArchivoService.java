@@ -8,6 +8,4 @@ import java.util.List;
 public interface ArchivoService {
 
     Archivo findById(String id) throws ValidadorSsExcepcion;
-
-    List<Archivo> findByNombreCampo(String nombre);
 }

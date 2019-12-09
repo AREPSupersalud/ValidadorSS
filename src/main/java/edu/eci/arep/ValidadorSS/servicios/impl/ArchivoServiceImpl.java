@@ -23,9 +23,4 @@ public class ArchivoServiceImpl implements ArchivoService {
             throw new ValidadorSsExcepcion("El archivo con id " + id + "no existe.");
         return archivo.get();
     }
-
-    @Override
-    public List<Archivo> findByNombreCampo(String nombre) {
-        return archivoRepository.findAllByCampos_Empty_Nombre(nombre);
-    }
 }

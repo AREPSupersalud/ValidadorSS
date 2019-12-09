@@ -6,19 +6,8 @@ import java.util.Calendar;
 
 public class CampoNIT extends Campo {
 
-
     public CampoNIT(String valor) {
-        super(valor);
-    }
-
-    @Override
-    public boolean validarSoloDigitos() {
-        try {
-            Integer.parseInt(super.valor);
-            return true;
-        }catch (NumberFormatException e) {
-            return false;
-        }
+        super("NIT", valor);
     }
 
     @Override

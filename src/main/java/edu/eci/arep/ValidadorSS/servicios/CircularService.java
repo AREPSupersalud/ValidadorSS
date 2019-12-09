@@ -8,6 +8,4 @@ import java.util.List;
 public interface CircularService {
 
     Circular findById(String id) throws ValidadorSsExcepcion;
-
-    List<Circular> findByArchivoId(String id);
 }

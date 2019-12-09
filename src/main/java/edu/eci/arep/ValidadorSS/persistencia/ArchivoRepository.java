@@ -9,6 +9,4 @@ import java.util.Optional;
 public interface ArchivoRepository extends MongoRepository<Archivo, String> {
 
     Optional<Archivo> findById(String id);
-
-    List<Archivo> findAllByCampos_Empty_Nombre(String nombreCampo);
 }

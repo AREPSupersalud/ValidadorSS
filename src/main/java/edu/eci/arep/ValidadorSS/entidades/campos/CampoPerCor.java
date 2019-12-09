@@ -5,11 +5,8 @@ import edu.eci.arep.ValidadorSS.entidades.Campo;
 public class CampoPerCor extends Campo {
 
     public CampoPerCor(String valor) {
-        super(valor);
+        super("PerCor", valor);
     }
-
-
-
 
     @Override
     public boolean validarLongitud() {
@@ -35,5 +32,4 @@ public class CampoPerCor extends Campo {
     public boolean esCorrecto() {
         return true;
     }
-
 }

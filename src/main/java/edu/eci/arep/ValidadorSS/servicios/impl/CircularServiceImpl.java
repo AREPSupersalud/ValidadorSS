@@ -23,9 +23,4 @@ public class CircularServiceImpl implements CircularService {
             throw new ValidadorSsExcepcion("La circular con id " + id + "no existe.");
         return circular.get();
     }
-
-    @Override
-    public List<Circular> findByArchivoId(String id) {
-        return circularRepository.findAllByArchivos_Empty_Id(id);
-    }
 }

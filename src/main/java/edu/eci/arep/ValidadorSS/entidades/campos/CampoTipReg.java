@@ -4,16 +4,14 @@ import edu.eci.arep.ValidadorSS.entidades.Campo;
 
 public class CampoTipReg extends Campo {
 
-
     public CampoTipReg(String valor) {
-        super(valor);
+        super("TipReg", valor);
     }
 
     @Override
     public boolean esCorrecto() {
         return false;
     }
-
 
     @Override
     public boolean validarLongitud() {

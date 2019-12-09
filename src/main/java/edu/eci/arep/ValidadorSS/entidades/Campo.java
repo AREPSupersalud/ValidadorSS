@@ -13,7 +13,8 @@ public abstract class Campo implements Regla {
 
     protected String valor;
 
-    public Campo(String valor) {
+    public Campo(String nombre, String valor) {
+        this.nombre = nombre;
         this.valor = valor;
     }
 
@@ -22,6 +23,22 @@ public abstract class Campo implements Regla {
         return String.format(
                 "Campo[nombre=%s, valor='%s']",
                 nombre, valor);
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
     }
 
     public abstract boolean esCorrecto();

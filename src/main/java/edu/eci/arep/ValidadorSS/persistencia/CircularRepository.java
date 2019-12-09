@@ -9,6 +9,4 @@ import java.util.Optional;
 public interface CircularRepository extends MongoRepository<Circular, String> {
 
     Optional<Circular> findById(String id);
-
-    List<Circular> findAllByArchivos_Empty_Id(String id);
 }

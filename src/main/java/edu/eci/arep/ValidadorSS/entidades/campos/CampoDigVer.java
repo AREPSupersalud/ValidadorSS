@@ -2,25 +2,20 @@ package edu.eci.arep.ValidadorSS.entidades.campos;
 
 import edu.eci.arep.ValidadorSS.entidades.Campo;
 
-public class CampoAño extends Campo {
+public class CampoDigVer extends Campo {
 
-    public CampoAño(String valor) {
-        super(valor);
+    public CampoDigVer(String valor) {
+        super("DigVer", valor);
     }
 
     @Override
     public boolean esCorrecto() {
-        return validarLongitud();
-    }
-
-    @Override
-    public boolean validarSoloDigitos() {
-        return false;
+        return this.validarSoloDigitos() && validarLongitud();
     }
 
     @Override
     public boolean validarLongitud() {
-        return (valor.length() <= 2);
+        return super.valor.length() == 1;
     }
 
     @Override

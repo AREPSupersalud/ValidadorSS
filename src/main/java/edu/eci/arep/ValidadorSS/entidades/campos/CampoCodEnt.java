@@ -4,10 +4,10 @@ import edu.eci.arep.ValidadorSS.entidades.Campo;
 
 import java.util.regex.Pattern;
 
-public class CampoCodEn extends Campo {
+public class CampoCodEnt extends Campo {
 
-    public CampoCodEn(String valor) {
-        super(valor);
+    public CampoCodEnt(String valor) {
+        super("CodEnt", valor);
     }
 
     @Override

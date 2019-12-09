@@ -5,9 +5,11 @@ import edu.eci.arep.ValidadorSS.excepciones.ValidadorSsExcepcion;
 import edu.eci.arep.ValidadorSS.persistencia.CampoRepository;
 import edu.eci.arep.ValidadorSS.servicios.CampoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class CampoServiceImpl implements CampoService {
 
     @Autowired

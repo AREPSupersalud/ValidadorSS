@@ -2,34 +2,30 @@ package edu.eci.arep.ValidadorSS.entidades.campos;
 
 import edu.eci.arep.ValidadorSS.entidades.Campo;
 
-import java.util.Calendar;
+public class CampoAño extends Campo {
 
-public class CampoNIT extends Campo {
-
-
-    public CampoNIT(String valor) {
+    public CampoAño(String valor) {
         super(valor);
     }
 
     @Override
-    public boolean validarSoloDigitos() {
-        try {
-            Integer.parseInt(super.valor);
-            return true;
-        }catch (NumberFormatException e) {
-            return false;
-        }
+    public boolean esCorrecto() {
+        return validarLongitud();
     }
 
     @Override
-    public boolean validarLongitud() {
+    public boolean validarSoloDigitos() {
         return false;
     }
 
     @Override
+    public boolean validarLongitud() {
+        return (valor.length() <= 2);
+    }
+
+    @Override
     public boolean validarRangoEntero() {
-        if(super.valor.length()!= 16) return false;
-        else return true;
+        return false;
     }
 
     @Override
@@ -40,10 +36,5 @@ public class CampoNIT extends Campo {
     @Override
     public boolean validarAlfanumerico() {
         return false;
-    }
-
-    @Override
-    public boolean esCorrecto(){
-        return validarSoloDigitos() && validarRangoEntero();
     }
 }

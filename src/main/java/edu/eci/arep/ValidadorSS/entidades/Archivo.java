@@ -1,11 +1,17 @@
 package edu.eci.arep.ValidadorSS.entidades;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Document
 public class Archivo {
 
+    @Id
     private String id;
+
     private String nombre;
     private List<Campo> campos;
 
@@ -22,6 +28,13 @@ public class Archivo {
         this.id = id;
         this.nombre = nombre;
         this.campos = campos;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Archivo[id=%s, nombre='%s', campos='%s']",
+                id, nombre, campos);
     }
 
     public String getId() {

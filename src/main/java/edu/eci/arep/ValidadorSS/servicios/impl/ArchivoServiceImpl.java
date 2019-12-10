@@ -22,10 +22,25 @@ public class ArchivoServiceImpl implements ArchivoService {
     }
 
     @Override
+    public List<Archivo> findAll() {
+        return archivoRepository.findAll();
+    }
+
+    @Override
+    public void save(Archivo archivo) {
+        archivoRepository.save(archivo);
+    }
+
+    @Override
     public Archivo findById(String id) throws ValidadorSsExcepcion {
         Optional<Archivo> archivo = archivoRepository.findById(id);
         if (!archivo.isPresent())
             throw new ValidadorSsExcepcion("El archivo con id " + id + "no existe.");
         return archivo.get();
+    }
+
+    @Override
+    public void deleteAll() {
+        archivoRepository.deleteAll();
     }
 }

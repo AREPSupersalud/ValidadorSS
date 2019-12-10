@@ -17,10 +17,25 @@ public class CircularServiceImpl implements CircularService {
     private CircularRepository circularRepository;
 
     @Override
+    public List<Circular> findAll() {
+        return circularRepository.findAll();
+    }
+
+    @Override
+    public void save(Circular circular) {
+        circularRepository.save(circular);
+    }
+
+    @Override
     public Circular findById(String id) throws ValidadorSsExcepcion {
         Optional<Circular> circular = circularRepository.findById(id);
         if (!circular.isPresent())
             throw new ValidadorSsExcepcion("La circular con id " + id + "no existe.");
         return circular.get();
+    }
+
+    @Override
+    public void deleteAll() {
+        circularRepository.deleteAll();
     }
 }

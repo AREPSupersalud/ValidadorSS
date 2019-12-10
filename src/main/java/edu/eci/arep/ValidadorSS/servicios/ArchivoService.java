@@ -8,5 +8,12 @@ import java.util.List;
 public interface ArchivoService {
 
     int getMaxId();
+
+    List<Archivo> findAll();
+
+    void save(Archivo archivo);
+
     Archivo findById(String id) throws ValidadorSsExcepcion;
+
+    void deleteAll();
 }

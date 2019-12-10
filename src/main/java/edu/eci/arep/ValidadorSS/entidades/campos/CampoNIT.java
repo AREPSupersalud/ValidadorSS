@@ -17,7 +17,7 @@ public class CampoNIT extends Campo {
 
     @Override
     public boolean validarRangoEntero() {
-        if(super.valor.length()!= 16) return false;
+        if(super.valor.length()>= 16) return false;
         else return true;
     }
 

@@ -16,7 +16,7 @@ public class CampoTipReg extends Campo {
     @Override
     public boolean validarLongitud() {
 
-        return super.valor.length() == 3;
+        return super.valor.length() <= 3;
     }
 
     @Override

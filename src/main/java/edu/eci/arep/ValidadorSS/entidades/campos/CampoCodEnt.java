@@ -22,7 +22,7 @@ public class CampoCodEnt extends Campo {
 
     @Override
     public boolean validarLongitud() {
-        return (super.valor.length() ==15);
+        return (super.valor.length() <=15);
     }
 
     @Override

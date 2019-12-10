@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/Validador")
+@RequestMapping(value = "/validador")
 public class CircularControlador {
 
     @Autowired

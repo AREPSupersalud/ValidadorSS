@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
 
-public interface CampoRepository extends MongoRepository<Campo, String> {
+public interface CampoRepository extends MongoRepository<Campo, Integer> {
 
     Optional<Campo> findByNombre(String nombre);
 }

@@ -4,8 +4,8 @@ import edu.eci.arep.ValidadorSS.entidades.Campo;
 
 public class CampoDigVer extends Campo {
 
-    public CampoDigVer(String valor) {
-        super("DigVer", valor);
+    public CampoDigVer(int id, String valor) {
+        super(id,"DigVer", valor);
     }
 
     @Override

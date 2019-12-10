@@ -17,6 +17,11 @@ public class ArchivoServiceImpl implements ArchivoService {
     private ArchivoRepository archivoRepository;
 
     @Override
+    public int getMaxId() {
+        return archivoRepository.findAll().size();
+    }
+
+    @Override
     public Archivo findById(String id) throws ValidadorSsExcepcion {
         Optional<Archivo> archivo = archivoRepository.findById(id);
         if (!archivo.isPresent())

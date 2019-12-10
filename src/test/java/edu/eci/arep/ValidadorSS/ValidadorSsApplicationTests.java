@@ -6,6 +6,7 @@ import edu.eci.arep.ValidadorSS.entidades.campos.CampoNIT;
 import edu.eci.arep.ValidadorSS.persistencia.ArchivoRepository;
 import edu.eci.arep.ValidadorSS.persistencia.CampoRepository;
 import edu.eci.arep.ValidadorSS.persistencia.CircularRepository;
+import edu.eci.arep.ValidadorSS.servicios.CampoService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,7 @@ import static junit.framework.TestCase.assertTrue;
 public class ValidadorSsApplicationTests {
 
 	@Autowired
-	private CampoRepository campoRepository;
-
-	@Autowired
-	private ArchivoRepository archivoRepository;
-
-	@Autowired
-	private CircularRepository circularRepository;
+	private CampoService campoService;
 
 	@Test
 	void contextLoads() {
@@ -36,14 +31,21 @@ public class ValidadorSsApplicationTests {
 
 	@Test
 	public void itDeberiaGuardarUnCampo() {
-		campoRepository.deleteAll();
-		campoRepository.save(new CampoNIT("103046784"));
-		List<Campo> campo = campoRepository.findAll();
+		campoService.deleteAll();
+		campoService.save(new CampoNIT(campoService.getMaxId() + 1,"103046784"));
+        campoService.save(new CampoNIT(campoService.getMaxId() + 1,"1020854712"));
+		List<Campo> campo = campoService.findAll();
 		if (!campo.isEmpty()) {
 			System.out.println("--------------- Campo ---------------");
 			System.out.println(campo.get(0).toString());
+            System.out.println(campo.get(1).toString());
 			System.out.println("-------------------------------------");
-			assertTrue(campo.get(0).getValor().equals("103046784"));
+			assertTrue(
+					campo.get(0).getValor().equals("103046784") && campo.get(0).getId() == 1
+			);
+            assertTrue(
+                    campo.get(1).getValor().equals("1020854712") && campo.get(1).getId() == 2
+            );
 		} else {
 			assertTrue(false);
 		}

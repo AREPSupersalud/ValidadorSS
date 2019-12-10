@@ -6,8 +6,8 @@ import java.util.Calendar;
 
 public class CampoNIT extends Campo {
 
-    public CampoNIT(String valor) {
-        super("NIT", valor);
+    public CampoNIT(int id, String valor) {
+        super(id,"NIT", valor);
     }
 
     @Override

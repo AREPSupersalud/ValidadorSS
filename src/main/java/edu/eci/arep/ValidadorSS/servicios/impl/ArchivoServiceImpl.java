@@ -28,6 +28,16 @@ public class ArchivoServiceImpl implements ArchivoService {
     }
 
     @Override
+    public List<Archivo> findAll() {
+        return archivoRepository.findAll();
+    }
+
+    @Override
+    public void save(Archivo archivo) {
+        archivoRepository.save(archivo);
+    }
+
+    @Override
     public Archivo findById(String id) throws ValidadorSsExcepcion {
         Optional<Archivo> archivo = archivoRepository.findById(id);
         if (!archivo.isPresent())
@@ -97,4 +107,9 @@ public class ArchivoServiceImpl implements ArchivoService {
         return archivosMatch;
     }
 
+
+    @Override
+    public void deleteAll() {
+        archivoRepository.deleteAll();
+    }
 }

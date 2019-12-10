@@ -7,7 +7,11 @@ import java.util.List;
 
 public interface CircularService {
 
+    List<Circular> findAll();
+
+    void save(Circular circular);
+
     Circular findById(String id) throws ValidadorSsExcepcion;
 
-
+    void deleteAll();
 }

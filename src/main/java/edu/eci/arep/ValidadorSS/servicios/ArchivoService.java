@@ -11,6 +11,11 @@ import java.util.List;
 public interface ArchivoService {
 
     int getMaxId();
+
+    List<Archivo> findAll();
+
+    void save(Archivo archivo);
+
     Archivo findById(String id) throws ValidadorSsExcepcion;
 
     Archivo findByArchivoByCircular(String idCircular, int idArchivo) throws ValidadorSsExcepcion;
@@ -22,4 +27,6 @@ public interface ArchivoService {
     HashMap<String,Boolean> consultarValidacionCamposArchivos(String idCircular, int idArchivo) throws ValidadorSsExcepcion;
 
     List<Archivo> consultarArchivosPorCampo(String idCircular, String nombre) throws ValidadorSsExcepcion;
+
+    void deleteAll();
 }

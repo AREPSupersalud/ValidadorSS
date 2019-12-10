@@ -4,8 +4,8 @@ import edu.eci.arep.ValidadorSS.entidades.Campo;
 
 public class CampoPerCor extends Campo {
 
-    public CampoPerCor(String valor) {
-        super("PerCor", valor);
+    public CampoPerCor(int id, String valor) {
+        super(id,"PerCor", valor);
     }
 
     @Override

@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface ArchivoService {
 
+    int getMaxId();
     Archivo findById(String id) throws ValidadorSsExcepcion;
 }

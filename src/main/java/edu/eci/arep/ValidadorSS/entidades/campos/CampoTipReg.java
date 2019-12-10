@@ -4,8 +4,8 @@ import edu.eci.arep.ValidadorSS.entidades.Campo;
 
 public class CampoTipReg extends Campo {
 
-    public CampoTipReg(String valor) {
-        super("TipReg", valor);
+    public CampoTipReg(int id, String valor) {
+        super(id,"TipReg", valor);
     }
 
     @Override

@@ -4,8 +4,8 @@ import edu.eci.arep.ValidadorSS.entidades.Campo;
 
 public class CampoAno extends Campo {
 
-    public CampoAno(String valor) {
-        super("año", valor);
+    public CampoAno(int id, String valor) {
+        super(id,"Año", valor);
     }
 
     @Override

@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 
 public class CampoCodEnt extends Campo {
 
-    public CampoCodEnt(String valor) {
-        super("CodEnt", valor);
+    public CampoCodEnt(int id, String valor) {
+        super(id,"CodEnt", valor);
     }
 
     @Override

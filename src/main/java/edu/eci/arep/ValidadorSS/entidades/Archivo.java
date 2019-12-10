@@ -10,22 +10,25 @@ import java.util.List;
 public class Archivo {
 
     @Id
-    private String id;
+    private int id;
 
+    private String tipo;
     private String nombre;
     private List<Campo> campos;
 
     public Archivo() {
     }
 
-    public Archivo(String id, String nombre) {
+    public Archivo(int id, String tipo, String nombre) {
         this.id = id;
+        this.tipo = tipo;
         this.nombre = nombre;
         this.campos = new ArrayList<>();
     }
 
-    public Archivo(String id, String nombre, List<Campo> campos) {
+    public Archivo(int id, String tipo, String nombre, List<Campo> campos) {
         this.id = id;
+        this.tipo = tipo;
         this.nombre = nombre;
         this.campos = campos;
     }
@@ -33,16 +36,24 @@ public class Archivo {
     @Override
     public String toString() {
         return String.format(
-                "Archivo[id=%s, nombre='%s', campos='%s']",
-                id, nombre, campos);
+                "Archivo[id=%s, tipo='%s', nombre='%s', campos='%s']",
+                id, tipo, nombre, campos);
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getNombre() {

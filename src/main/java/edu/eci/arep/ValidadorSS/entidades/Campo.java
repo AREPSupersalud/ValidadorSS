@@ -9,11 +9,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public abstract class Campo implements Regla {
 
     @Id
-    protected String nombre;
+    protected int id;
 
+    protected String nombre;
     protected String valor;
 
-    public Campo(String nombre, String valor) {
+    public Campo(int id, String nombre, String valor) {
+        this.id = id;
         this.nombre = nombre;
         this.valor = valor;
     }
@@ -21,8 +23,16 @@ public abstract class Campo implements Regla {
     @Override
     public String toString() {
         return String.format(
-                "Campo[nombre=%s, valor='%s']",
-                nombre, valor);
+                "Campo[id=%s, nombre='%s', valor='%s']",
+                id, nombre, valor);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {

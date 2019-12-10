@@ -1,6 +1,9 @@
 package edu.eci.arep.ValidadorSS.Controladores;
 
+import edu.eci.arep.ValidadorSS.entidades.Archivo;
 import edu.eci.arep.ValidadorSS.entidades.Circular;
+import edu.eci.arep.ValidadorSS.servicios.ArchivoService;
+import edu.eci.arep.ValidadorSS.servicios.CampoService;
 import edu.eci.arep.ValidadorSS.servicios.CircularService;
 import edu.eci.arep.ValidadorSS.servicios.impl.CircularServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,12 @@ public class CircularControlador {
     @Autowired
     CircularService circularService;
 
+    @Autowired
+    ArchivoService archivoService;
+
+    @Autowired
+    CampoService campoService;
+
     @RequestMapping(value = "/circular/{id}", method = RequestMethod.GET)
     public ResponseEntity<Circular> recursoConsultarCircularPorID(@PathVariable String id) throws Exception {
         try {
@@ -32,14 +41,16 @@ public class CircularControlador {
         }
     }
 
-    @RequestMapping(value = "/circular/{}", method = RequestMethod.GET)
-    public ResponseEntity<Circular> recursoConsultarArchivo(@PathVariable String id) throws Exception {
+    @RequestMapping(value = "/Archivo/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Archivo> recursoConsultarArchivoId(@PathVariable String id) throws Exception {
         try {
-            Circular circular = circularService.findById(id);
+            Archivo circular = archivoService.findById(id);
             return new ResponseEntity<>(circular, HttpStatus.OK);
         } catch (Exception ex) {
             throw ex;
         }
     }
+
+
 
 }

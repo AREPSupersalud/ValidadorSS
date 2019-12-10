@@ -28,4 +28,5 @@ public class ArchivoServiceImpl implements ArchivoService {
             throw new ValidadorSsExcepcion("El archivo con id " + id + "no existe.");
         return archivo.get();
     }
+
 }

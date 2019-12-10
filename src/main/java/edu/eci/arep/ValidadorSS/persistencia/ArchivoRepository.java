@@ -9,4 +9,7 @@ import java.util.Optional;
 public interface ArchivoRepository extends MongoRepository<Archivo, Integer> {
 
     Optional<Archivo> findById(String id);
+    Optional<List<Archivo>> findAllByTipo(String tipo);
+    Optional<List<Archivo>> findAllByNombre(String nombre);
+
 }

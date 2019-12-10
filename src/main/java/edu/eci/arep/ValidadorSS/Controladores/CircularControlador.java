@@ -51,7 +51,7 @@ public class CircularControlador {
         }
     }
 
-    @RequestMapping(value = "/circular/{idCircular}/archivo/{idArchivo}/validacion}", method = RequestMethod.GET)
+    @RequestMapping(value = "/circular/{idCircular}/archivo/{idArchivo}/validacion", method = RequestMethod.GET)
     public ResponseEntity<Boolean> recursoConsultarValidacionDelArchivo(@PathVariable String idCircular, @PathVariable int idArchivo) throws Exception {
         try {
             Boolean validacion = archivoService.consultarValidacion(idCircular,idArchivo);

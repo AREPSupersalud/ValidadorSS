@@ -15,6 +15,8 @@ public class Archivo {
     private String nombre;
     private List<Campo> campos;
 
+
+
     public Archivo() {
     }
 

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -51,18 +52,33 @@ public class CircularControlador {
         }
     }
 
-    @RequestMapping(value = "/archivo/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Archivo> recursoConsultarArchivoId(@PathVariable String id) throws Exception {
+    @RequestMapping(value = "/circular/{idCircular}/archivo/{idArchivo}/validacion", method = RequestMethod.GET)
+    public ResponseEntity<Boolean> recursoConsultarValidacionDelArchivo(@PathVariable String idCircular, @PathVariable int idArchivo) throws Exception {
         try {
-            Archivo circular = archivoService.findById(id);
-            return new ResponseEntity<>(circular, HttpStatus.OK);
+            Boolean validacion = archivoService.consultarValidacion(idCircular,idArchivo);
+            return new ResponseEntity<>(validacion, HttpStatus.OK);
         } catch (Exception ex) {
             throw ex;
         }
     }
 
+    @RequestMapping(value = "/circular/{idCircular}/archivo/{idArchivo}/validacion", method = RequestMethod.GET)
+    public ResponseEntity<HashMap<String,Boolean>> recursoConsultarpruebaCamposArchivos(@PathVariable String idCircular, @PathVariable int idArchivo) throws Exception {
+        try {
+            HashMap<String,Boolean> validacion = archivoService.consultarValidacionCamposArchivos(idCircular,idArchivo);
+            return new ResponseEntity<>(validacion, HttpStatus.OK);
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
 
-
-
-
+    @RequestMapping(value = "/circular/{idCircular}/campos/{nombre}", method = RequestMethod.GET)
+    public ResponseEntity<List<Archivo>> recursoConsultarArchivosPorCampo(@PathVariable String idCircular,@PathVariable String nombre) throws Exception {
+        try {
+            List<Archivo> archivos = archivoService.consultarArchivosPorCampo(idCircular,nombre);
+            return new ResponseEntity<>(archivos, HttpStatus.OK);
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
 }

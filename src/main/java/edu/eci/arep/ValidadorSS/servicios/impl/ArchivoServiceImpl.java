@@ -10,6 +10,7 @@ import edu.eci.arep.ValidadorSS.servicios.ArchivoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -51,6 +52,16 @@ public class ArchivoServiceImpl implements ArchivoService {
     }
 
     @Override
+    public List<Archivo> findArchivosByCircular(String idCircular) throws ValidadorSsExcepcion {
+        Optional<Circular> circular = circularRepository.findById(idCircular);
+        if(!circular.isPresent()){
+            throw new ValidadorSsExcepcion("El archivo con id " + idCircular + "no existe.");
+        }
+        List<Archivo> archivos = circular.get().getArchivos();
+        return archivos;
+    }
+
+    @Override
     public Boolean consultarValidacion(String idCircular, int idArchivo) throws ValidadorSsExcepcion {
         Archivo archivo = this.findByArchivoByCircular(idCircular,idArchivo);
         Boolean validacion =  true;
@@ -68,6 +79,22 @@ public class ArchivoServiceImpl implements ArchivoService {
             validaciones.put(c.getNombre(),c.esCorrecto());
         }
         return validaciones;
+    }
+
+    @Override
+    public List<Archivo> consultarArchivosPorCampo(String idCircular, String nombre) throws ValidadorSsExcepcion {
+        List<Archivo> archivos = this.findArchivosByCircular(idCircular);
+        List<Archivo> archivosMatch = new ArrayList<>();
+        for (Archivo a: archivos) {
+            List<Campo> campos = a.getCampos();
+            for (Campo c: campos) {
+                if(c.getNombre().equals(nombre)){
+                    archivosMatch.add(a);
+                }
+            }
+
+        }
+        return archivosMatch;
     }
 
 }

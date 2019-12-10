@@ -72,5 +72,13 @@ public class CircularControlador {
         }
     }
 
-
+    @RequestMapping(value = "/circular/{idCircular}/campos/{nombre}", method = RequestMethod.GET)
+    public ResponseEntity<List<Archivo>> recursoConsultarArchivosPorCampo(@PathVariable String idCircular,@PathVariable String nombre) throws Exception {
+        try {
+            List<Archivo> archivos = archivoService.consultarArchivosPorCampo(idCircular,nombre);
+            return new ResponseEntity<>(archivos, HttpStatus.OK);
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
 }

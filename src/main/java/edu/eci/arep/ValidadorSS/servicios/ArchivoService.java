@@ -15,7 +15,11 @@ public interface ArchivoService {
 
     Archivo findByArchivoByCircular(String idCircular, int idArchivo) throws ValidadorSsExcepcion;
 
+    List<Archivo> findArchivosByCircular(String idCircular) throws ValidadorSsExcepcion;
+
     Boolean consultarValidacion(String idCircular, int idArchivo) throws ValidadorSsExcepcion;
 
     HashMap<String,Boolean> consultarValidacionCamposArchivos(String idCircular, int idArchivo) throws ValidadorSsExcepcion;
+
+    List<Archivo> consultarArchivosPorCampo(String idCircular, String nombre) throws ValidadorSsExcepcion;
 }

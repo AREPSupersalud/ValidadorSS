@@ -12,5 +12,4 @@ public interface ArchivoRepository extends MongoRepository<Archivo, Integer> {
     Optional<List<Archivo>> findAllByTipo(String tipo);
     Optional<List<Archivo>> findAllByNombre(String nombre);
 
-
 }

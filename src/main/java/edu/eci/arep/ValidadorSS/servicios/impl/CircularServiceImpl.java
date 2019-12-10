@@ -23,4 +23,6 @@ public class CircularServiceImpl implements CircularService {
             throw new ValidadorSsExcepcion("La circular con id " + id + "no existe.");
         return circular.get();
     }
+
+
 }

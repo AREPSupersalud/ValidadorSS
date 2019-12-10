@@ -11,4 +11,6 @@ public interface ArchivoService {
 
     int getMaxId();
     Archivo findById(String id) throws ValidadorSsExcepcion;
+
+    Archivo findByArchivoByCircular(String idCircular, int idArchivo) throws ValidadorSsExcepcion;
 }

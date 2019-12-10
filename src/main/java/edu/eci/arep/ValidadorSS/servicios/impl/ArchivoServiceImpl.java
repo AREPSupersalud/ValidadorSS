@@ -1,8 +1,10 @@
 package edu.eci.arep.ValidadorSS.servicios.impl;
 
 import edu.eci.arep.ValidadorSS.entidades.Archivo;
+import edu.eci.arep.ValidadorSS.entidades.Circular;
 import edu.eci.arep.ValidadorSS.excepciones.ValidadorSsExcepcion;
 import edu.eci.arep.ValidadorSS.persistencia.ArchivoRepository;
+import edu.eci.arep.ValidadorSS.persistencia.CircularRepository;
 import edu.eci.arep.ValidadorSS.servicios.ArchivoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,8 @@ public class ArchivoServiceImpl implements ArchivoService {
 
     @Autowired
     private ArchivoRepository archivoRepository;
-
+    @Autowired
+    private CircularRepository circularRepository;
     @Override
     public int getMaxId() {
         return archivoRepository.findAll().size();
@@ -27,6 +30,22 @@ public class ArchivoServiceImpl implements ArchivoService {
         if (!archivo.isPresent())
             throw new ValidadorSsExcepcion("El archivo con id " + id + "no existe.");
         return archivo.get();
+    }
+
+    @Override
+    public Archivo findByArchivoByCircular(String idCircular, int idArchivo) throws ValidadorSsExcepcion {
+        Optional<Circular> circular = circularRepository.findById(idCircular);
+        if(!circular.isPresent()){
+            throw new ValidadorSsExcepcion("El archivo con id " + idCircular + "no existe.");
+        }
+        List<Archivo> archivos = circular.get().getArchivos();
+        Archivo archivo = null;
+        for (Archivo a: archivos) {
+            if(a.getId() == idArchivo){
+                archivo = a;
+            }
+        }
+        return archivo;
     }
 
 }

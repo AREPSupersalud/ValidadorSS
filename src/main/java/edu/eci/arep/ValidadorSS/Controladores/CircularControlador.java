@@ -41,7 +41,7 @@ public class CircularControlador {
         }
     }
 
-    @RequestMapping(value = "/circular/{idCircular}/archivo{idArchivo}", method = RequestMethod.GET)
+    @RequestMapping(value = "/circular/{idCircular}/archivo/{idArchivo}", method = RequestMethod.GET)
     public ResponseEntity<Archivo> recursoConsultarArchivoPorIdCircular(@PathVariable String idCircular, @PathVariable int idArchivo) throws Exception {
         try {
             Archivo archivo = archivoService.findByArchivoByCircular(idCircular,idArchivo);
@@ -51,17 +51,15 @@ public class CircularControlador {
         }
     }
 
-    @RequestMapping(value = "/archivo/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Archivo> recursoConsultarArchivoId(@PathVariable String id) throws Exception {
+    @RequestMapping(value = "/circular/{idCircular}/archivo/{idArchivo}/validacion}", method = RequestMethod.GET)
+    public ResponseEntity<Boolean> recursoConsultarValidacionDelArchivo(@PathVariable String idCircular, @PathVariable int idArchivo) throws Exception {
         try {
-            Archivo circular = archivoService.findById(id);
-            return new ResponseEntity<>(circular, HttpStatus.OK);
+            Boolean validacion = archivoService.consultarValidacion(idCircular,idArchivo);
+            return new ResponseEntity<>(validacion, HttpStatus.OK);
         } catch (Exception ex) {
             throw ex;
         }
     }
-
-
 
 
 

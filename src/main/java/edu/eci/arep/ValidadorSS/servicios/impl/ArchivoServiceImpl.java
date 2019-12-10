@@ -1,6 +1,7 @@
 package edu.eci.arep.ValidadorSS.servicios.impl;
 
 import edu.eci.arep.ValidadorSS.entidades.Archivo;
+import edu.eci.arep.ValidadorSS.entidades.Campo;
 import edu.eci.arep.ValidadorSS.entidades.Circular;
 import edu.eci.arep.ValidadorSS.excepciones.ValidadorSsExcepcion;
 import edu.eci.arep.ValidadorSS.persistencia.ArchivoRepository;
@@ -46,6 +47,16 @@ public class ArchivoServiceImpl implements ArchivoService {
             }
         }
         return archivo;
+    }
+
+    @Override
+    public Boolean consultarValidacion(String idCircular, int idArchivo) throws ValidadorSsExcepcion {
+        Archivo archivo = this.findByArchivoByCircular(idCircular,idArchivo);
+        Boolean validacion =  true;
+        for (Campo c: archivo.getCampos()) {
+            validacion = c.esCorrecto() && validacion;
+        }
+        return validacion;
     }
 
 }

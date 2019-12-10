@@ -62,7 +62,7 @@ public class CircularControlador {
         }
     }
 
-    @RequestMapping(value = "/circular/{idCircular}/archivo/{idArchivo}/validacion", method = RequestMethod.GET)
+    @RequestMapping(value = "/circular/{idCircular}/archivo/{idArchivo}/validacion/campos", method = RequestMethod.GET)
     public ResponseEntity<HashMap<String,Boolean>> recursoConsultarpruebaCamposArchivos(@PathVariable String idCircular, @PathVariable int idArchivo) throws Exception {
         try {
             HashMap<String,Boolean> validacion = archivoService.consultarValidacionCamposArchivos(idCircular,idArchivo);

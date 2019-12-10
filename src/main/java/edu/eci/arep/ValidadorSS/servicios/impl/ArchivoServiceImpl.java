@@ -10,6 +10,7 @@ import edu.eci.arep.ValidadorSS.servicios.ArchivoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,6 +58,16 @@ public class ArchivoServiceImpl implements ArchivoService {
             validacion = c.esCorrecto() && validacion;
         }
         return validacion;
+    }
+
+    @Override
+    public HashMap<String,Boolean> consultarValidacionCamposArchivos(String idCircular, int idArchivo) throws ValidadorSsExcepcion {
+        Archivo archivo = this.findByArchivoByCircular(idCircular,idArchivo);
+        HashMap<String,Boolean> validaciones = new HashMap<String,Boolean>();
+        for (Campo c: archivo.getCampos()) {
+            validaciones.put(c.getNombre(),c.esCorrecto());
+        }
+        return validaciones;
     }
 
 }

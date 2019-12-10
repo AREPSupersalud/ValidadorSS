@@ -4,6 +4,7 @@ import edu.eci.arep.ValidadorSS.entidades.Archivo;
 import edu.eci.arep.ValidadorSS.excepciones.ValidadorSsExcepcion;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -15,4 +16,6 @@ public interface ArchivoService {
     Archivo findByArchivoByCircular(String idCircular, int idArchivo) throws ValidadorSsExcepcion;
 
     Boolean consultarValidacion(String idCircular, int idArchivo) throws ValidadorSsExcepcion;
+
+    HashMap<String,Boolean> consultarValidacionCamposArchivos(String idCircular, int idArchivo) throws ValidadorSsExcepcion;
 }

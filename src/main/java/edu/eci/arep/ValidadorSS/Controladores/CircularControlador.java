@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -61,6 +62,15 @@ public class CircularControlador {
         }
     }
 
+    @RequestMapping(value = "/circular/{idCircular}/archivo/{idArchivo}/validacion", method = RequestMethod.GET)
+    public ResponseEntity<HashMap<String,Boolean>> recursoConsultarpruebaCamposArchivos(@PathVariable String idCircular, @PathVariable int idArchivo) throws Exception {
+        try {
+            HashMap<String,Boolean> validacion = archivoService.consultarValidacionCamposArchivos(idCircular,idArchivo);
+            return new ResponseEntity<>(validacion, HttpStatus.OK);
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
 
 
 }

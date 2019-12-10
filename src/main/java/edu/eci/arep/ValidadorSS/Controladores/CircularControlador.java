@@ -41,7 +41,7 @@ public class CircularControlador {
         }
     }
 
-    @RequestMapping(value = "/circular/{idCircular}/archivo{idArchivo}", method = RequestMethod.GET)
+    @RequestMapping(value = "/circular/{idCircular}/archivo/{idArchivo}", method = RequestMethod.GET)
     public ResponseEntity<Archivo> recursoConsultarArchivoPorIdCircular(@PathVariable String idCircular, @PathVariable int idArchivo) throws Exception {
         try {
             Archivo archivo = archivoService.findByArchivoByCircular(idCircular,idArchivo);
